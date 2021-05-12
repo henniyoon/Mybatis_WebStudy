@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- xml 지시어 -->
+<?xml version="1.0" encoding="UTF-8"?> <!-- xml 지시어 -->
+<!-- 문서에 대한 정보를 기록하는 문서 규약 -->
+<!-- mybatis 설정파일이라는 것을 알려줌 -->
 <!DOCTYPE configuration
 PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
@@ -8,6 +9,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<typeAliases>
 	</typeAliases>
 	<!-- db연결 참조코드 -->
+	<!-- server context.xml에 커넥션풀 설정해놓은 것을 가져다 씀 -->
 	<environments default="">
 		<environment id="">
 			<transactionManager type="JDBC" />
@@ -21,3 +23,14 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="memo/mapper/memo.xml" />
 	</mappers>
 </configuration>
+
+
+
+
+
+
+
+
+
+
+

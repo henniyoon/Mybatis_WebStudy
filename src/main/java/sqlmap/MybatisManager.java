@@ -9,8 +9,8 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 public class MybatisManager {   
 	// SqlSessionFactoryBuilder => SqlSessionFactory => SqlSession
 	// SqlSession 객체 생성기
+	// 필드와 생성자 모두 private 처리로 외부 접근을 막음
 	private static SqlSessionFactory instance;
-	
 	private MybatisManager() { }
 	
 	public static SqlSessionFactory getInstance() {
