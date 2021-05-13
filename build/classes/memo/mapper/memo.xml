@@ -5,12 +5,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="memo">
 	<!-- id="태그의 id" resultType="결과자료형" -->
+	<!-- 검색 -->
 	<select id="list" resultType="memo.dto.MemoDTO">
 		select idx, writer, memo, post_date 
 		from memo 
 		where ${searchkey} like '%' || #{search} || '%' 
 		order by idx desc 
 	</select>
+	<!-- 목록 -->
 	<select id="listAll" resultType="memo.dto.MemoDTO">
 		select idx, writer, memo, post_date
 		from memo
@@ -18,5 +20,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		or memo like '%' || #{search} || '%'
 		order by idx desc
 	</select>
+	<!-- 삽입 -->
+	<insert id="insert">
+		insert into memo (idx, writer, memo)
+		values((select nvl(max(idx) + 1, 1) from memo), #{writer}, #{memo} )
+	</insert>
+	
 </mapper>
 
