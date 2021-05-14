@@ -8,7 +8,24 @@
 <%@ include file="../include/header.jsp" %>
 <script src="http://code.jquery.com/jquery-3.6.0.js"></script>
 <script>
-
+	$(function() {
+		// 체크 버튼
+		$("chkAll").click(function() {
+			if($("#chkAll").prop("checked")) {	// 체크 여부
+				$("input[name=idx]").prop("checked", true);		// 전부 체크
+			} else {
+				$("input[name=idx]").prop("checked", false);	// 전부 해제
+			}
+		});
+		$("#btnAllDel").click(function() {
+			document.form1.action="/ex_memo/memo_servlet/delete_all.do";
+			document.form1.submit();
+		});
+	});
+	// 선택 삭제
+	function memo_del(idx) {
+		location.href="/ex_memo/memo_servlet/del.do?idx=" + idx;
+	}
 </script>
 </head>
 <body>
