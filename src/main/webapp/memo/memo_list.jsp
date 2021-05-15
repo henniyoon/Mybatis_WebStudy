@@ -10,7 +10,7 @@
 <script>
 	$(function() {
 		// 체크 버튼
-		$("chkAll").click(function() {
+		$("#chkAll").click(function() {
 			if($("#chkAll").prop("checked")) {	// 체크 여부
 				$("input[name=idx]").prop("checked", true);		// 전부 체크
 			} else {
