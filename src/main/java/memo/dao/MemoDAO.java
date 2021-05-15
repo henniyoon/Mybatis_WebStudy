@@ -10,6 +10,7 @@ import memo.dto.MemoDTO;
 import sqlmap.MybatisManager;
 
 public class MemoDAO {
+	
 	// 메모 목록
 	public List<MemoDTO> listMemo(String searchkey, String search) {
 		// mybatis framework에 접속하여 sql 구문을 실행시키는 역할을 하는 SqlSession 객체 생성
@@ -28,6 +29,7 @@ public class MemoDAO {
 		}
 		return list;
 	}
+	
 	// 메모 추가
 	public void insertMemo(MemoDTO dto) {
 		SqlSession session = MybatisManager.getInstance().openSession();
@@ -38,12 +40,29 @@ public class MemoDAO {
 		session.close();
 	}
 	
+	// 메모 상세뷰
 	public MemoDTO viewMemo(int idx) {
 		SqlSession session = MybatisManager.getInstance().openSession();
 		// 결과 레코드가 한 건이므로 selectOne("select id", 매개변수);
 		MemoDTO dto = session.selectOne("memo.view", idx);
 		session.close();
 		return dto;
+	}
+	
+	// 메모 수정
+	public void updateMemo(MemoDTO dto) {
+		SqlSession session = MybatisManager.getInstance().openSession();
+		session.update("memo.update", dto);
+		session.commit();
+		session.close();
+	}
+	
+	// 메모 삭제
+	public void deleteMemo(int idx) {
+		SqlSession session = MybatisManager.getInstance().openSession();
+		session.delete("memo.delete", idx);
+		session.commit();
+		session.close();
 	}
 	
 }
