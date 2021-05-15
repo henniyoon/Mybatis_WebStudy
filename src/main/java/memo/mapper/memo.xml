@@ -20,11 +20,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		or memo like '%' || #{search} || '%'
 		order by idx desc
 	</select>
+	<!-- 상세 페이지 -->
+	<select id="view" resultType="memo.dto.MemoDTO">
+		select * from memo where idx = #{idx}
+	</select>
 	<!-- 삽입 -->
 	<insert id="insert">
 		insert into memo (idx, writer, memo)
 		values((select nvl(max(idx) + 1, 1) from memo), #{writer}, #{memo} )
 	</insert>
-	
+	<update id="update">
+		update memo set writer = #{writer}, memo = #{memo} where idx = #{idx}
+	</update>
+	<!-- 삭제 -->
+	<delete id="delete">
+		delete from memo where idx = #{idx}
+	</delete>
 </mapper>
 
