@@ -20,7 +20,10 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	</environments>
 	<!-- 실제 sql query -->
 	<mappers>
+		<!-- 한 줄 메모장 -->
 		<mapper resource="memo/mapper/memo.xml" />
+		<!-- 설문조사 -->
+		<mapper resource="survey/mapper/survey.xml" />
 	</mappers>
 </configuration>
 
