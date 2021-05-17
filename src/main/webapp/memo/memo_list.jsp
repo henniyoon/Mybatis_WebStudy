@@ -18,13 +18,13 @@
 			}
 		});
 		$("#btnAllDel").click(function() {
-			document.form1.action="/ex_memo/memo_servlet/delete_all.do";
+			document.form1.action="/mybatis_webstudy/memo_servlet/delete_all.do";
 			document.form1.submit();
 		});
 	});
 	// 선택 삭제
 	function memo_del(idx) {
-		location.href="/ex_memo/memo_servlet/del.do?idx=" + idx;
+		location.href="/mybatis_webstudy/memo_servlet/del.do?idx=" + idx;
 	}
 </script>
 </head>
@@ -44,7 +44,7 @@
 				<td><input type="checkbox" name="idx" value="${row.idx}">
 				<td>${s.count}</td>
 				<td>${row.writer}</td>
-				<td><a href="/ex_memo/memo_servlet/view.do?idx=${row.idx}">
+				<td><a href="/mybatis_webstudy/memo_servlet/view.do?idx=${row.idx}">
 				${row.memo}</a></td>
 				<td>${row.post_date}</td>
 				<td><input type="button" value="삭제" onclick="memo_del('${row.idx}')"></td>

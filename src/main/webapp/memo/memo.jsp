@@ -21,7 +21,7 @@
 		$.ajax({
 			type : "post",
 			data : param,
-			url : "/ex_memo/memo_servlet/list.do",
+			url : "/mybatis_webstudy/memo_servlet/list.do",
 			success : function(result) {
 				$("#result").html(result);
 			}
@@ -33,7 +33,7 @@
 		var param = "writer=" + writer + "&memo=" + memo;
 		$.ajax({
 			type: "post",
-			url: "/ex_memo/memo_servlet/insert.do",
+			url: "/mybatis_webstudy/memo_servlet/insert.do",
 			data: param,
 			success: function() {
 				list("search=");

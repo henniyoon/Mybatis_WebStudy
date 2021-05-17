@@ -22,12 +22,12 @@
 				memo.focus();
 				return;
 			}
-			document.form1.action = "/ex_memo/memo_servlet/update.do";
+			document.form1.action = "/mybatis_webstudy/memo_servlet/update.do";
 			document.form1.submit();
 		});
 		$("#btnDelete").click(function() {
 			if(confirm("삭제하시겠습니까?")) {
-				document.form1.action = "/ex_memo/memo_servlet/del.do";
+				document.form1.action = "/mybatis_webstudy/memo_servlet/del.do";
 				document.form1.submit();
 			}
 		});
