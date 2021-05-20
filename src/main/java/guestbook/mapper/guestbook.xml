@@ -9,4 +9,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where ${searchkey} like '%' || #{search} || '%'
 		order by idx desc
 	</select>
+	<select id="gbListAll" resultType="guestbook.dto.GuestBookDTO">
+		select idx, name, email, content, post_date
+		from guestbook
+		where name like '%' || #{search} || '%'
+			or content like '%' || #{search} || '%'
+		order by idx desc
+	</select>
+	<insert id="gbInsert">
+		insert into guestbook (idx, name, email, passwd, content) values
+		( guestbook_seq.nextval, #{name}, #{email}, #{passwd}, #{content} )
+	</insert>
 </mapper>
