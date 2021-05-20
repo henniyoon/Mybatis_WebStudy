@@ -18,6 +18,7 @@ public class GuestBookDAO {
 		if(searchkey.equals("name_content")) {	// 이름 + 내용 검색
 			list = session.selectList("gbListAll", search);
 		} else {
+			// 파라미터를 1개로 만들기 위해 map에 저장
 			Map<String, Object> map = new HashMap<>();
 			map.put("searchkey", searchkey);
 			map.put("search", search);
@@ -75,6 +76,12 @@ public class GuestBookDAO {
 		session.close();
 	}
 	
-	
+	// 삭제
+	public void gbDelete(int idx) {
+		SqlSession session = MybatisManager.getInstance().openSession();
+		session.delete("gbDelete", idx);
+		session.commit();
+		session.close();
+	}
 	
 }
