@@ -31,7 +31,7 @@ public class GuestBookController extends HttpServlet {
 				searchkey = request.getParameter("searchkey");
 			}
 			if(request.getParameter("search") != null) {
-				search = request.getParameter("searach");
+				search = request.getParameter("search");
 			}
 			List<GuestBookDTO> items = dao.getList(searchkey, search);
 			int count = items.size();
@@ -90,7 +90,14 @@ public class GuestBookController extends HttpServlet {
 			dao.gbUpdate(dto);
 			String url = "/guestbook_servlet/list.do";
 			response.sendRedirect(request.getContextPath() + url);
-		} 
+		
+		// 삭제
+		} else if(uri.indexOf("delete.do") != -1) {
+			int idx = Integer.parseInt(request.getParameter("idx"));
+			dao.gbDelete(idx);
+			String url = "/guestbook_servlet/list.do";
+			response.sendRedirect(request.getContextPath() + url);
+		}
 	}
 		
 	protected void doPost(HttpServletRequest request, 
