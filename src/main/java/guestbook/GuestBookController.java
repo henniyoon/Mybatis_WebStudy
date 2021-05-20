@@ -58,7 +58,39 @@ public class GuestBookController extends HttpServlet {
 			String url = "/guestbook_servlet/list.do";
 			response.sendRedirect(request.getContextPath() + url);
 			
-		}
+		// 비밀번호 체크	
+		} else if(uri.indexOf("passwd_check.do") != -1) {
+			int idx = Integer.parseInt(request.getParameter("idx"));
+			String passwd = request.getParameter("passwd");
+			boolean result = dao.passwdCheck(idx, passwd);
+			String url = "";
+			if(result) {
+				url = "/guestbook/edit.jsp";
+				GuestBookDTO dto = dao.gbDetail(idx);
+				request.setAttribute("dto", dto);
+			} else {
+				url = "/guestbook_servlet/list.do";
+			}
+			RequestDispatcher rd = request.getRequestDispatcher(url);
+			rd.forward(request, response);
+		
+		// 수정
+		} else if(uri.indexOf("update.do") != -1) {
+			int idx = Integer.parseInt(request.getParameter("idx"));
+			String name = request.getParameter("name");
+			String email = request.getParameter("email");
+			String passwd = request.getParameter("passwd");
+			String content = request.getParameter("content");
+			GuestBookDTO dto = new GuestBookDTO();
+			dto.setIdx(idx);
+			dto.setName(name);
+			dto.setEmail(email);
+			dto.setPasswd(passwd);
+			dto.setContent(content);
+			dao.gbUpdate(dto);
+			String url = "/guestbook_servlet/list.do";
+			response.sendRedirect(request.getContextPath() + url);
+		} 
 	}
 		
 	protected void doPost(HttpServletRequest request, 
