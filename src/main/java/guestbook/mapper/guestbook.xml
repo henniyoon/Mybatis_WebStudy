@@ -3,12 +3,16 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="guestbook">
+
+	<!-- 리스트 -->
 	<select id="gbList" resultType="guestbook.dto.GuestBookDTO">
 		select idx, name, email, content, post_date
 		from guestbook
 		where ${searchkey} like '%' || #{search} || '%'
 		order by idx desc
 	</select>
+	
+	<!-- 검색 -->
 	<select id="gbListAll" resultType="guestbook.dto.GuestBookDTO">
 		select idx, name, email, content, post_date
 		from guestbook
@@ -16,8 +20,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			or content like '%' || #{search} || '%'
 		order by idx desc
 	</select>
+	
+	<!-- 비밀번호 체크 -->
+	<select id="passwdCheck" resultType="int">
+		select count(*)	from guestbook
+		where idx = #{idx} and passwd = #{passwd}
+	</select>
+	
+	<!-- 방명록 상세 정보 -->
+	<select id="gbDetail" resultType="guestbook.dto.GuestBookDTO">
+		select * from guestbook where idx = #{idx}
+	</select>
+	
+	<!-- 추가 -->
 	<insert id="gbInsert">
 		insert into guestbook (idx, name, email, passwd, content) values
 		( guestbook_seq.nextval, #{name}, #{email}, #{passwd}, #{content} )
 	</insert>
+	
+	<update id="gbUpdate">
+		update guestbook
+		set name = #{name}, email = #{email}, passwd = #{passwd}, content = #{content}
+		where idx = #{idx}
+	</update>
 </mapper>
