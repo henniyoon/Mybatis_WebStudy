@@ -44,6 +44,7 @@ public class GuestBookDAO {
 		session.close();
 	}
 	
+	// 비밀번호 확인
 	public boolean passwdCheck(int idx, String passwd) {
 		boolean result = false;
 		SqlSession session = MybatisManager.getInstance().openSession();
@@ -56,7 +57,8 @@ public class GuestBookDAO {
 		session.close();
 		return result;
 	}
-
+	
+	// 방명록 상세 정보
 	public GuestBookDTO gbDetail(int idx) {
 		GuestBookDTO dto = new GuestBookDTO();
 		SqlSession session = MybatisManager.getInstance().openSession();
@@ -64,6 +66,15 @@ public class GuestBookDAO {
 		session.close();
 		return dto;
 	}
+	
+	// 수정
+	public void gbUpdate(GuestBookDTO dto) {
+		SqlSession session = MybatisManager.getInstance().openSession();
+		session.update("gbUpdate", dto);
+		session.commit();
+		session.close();
+	}
+	
 	
 	
 }
