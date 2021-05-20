@@ -43,6 +43,20 @@ public class GuestBookController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher(url);
 			rd.forward(request, response);
 			
+		// 추가
+		} else if(uri.indexOf("insert.do") != -1) {
+			String name = request.getParameter("name");
+			String email = request.getParameter("email");
+			String passwd = request.getParameter("passwd");
+			String content = request.getParameter("content");
+			GuestBookDTO dto = new GuestBookDTO();
+			dto.setName(name);
+			dto.setEmail(email);
+			dto.setPasswd(passwd);
+			dto.setContent(content);
+			dao.gbInsert(dto);
+			String url = "/guestbook_servlet/list.do";
+			response.sendRedirect(request.getContextPath() + url);
 			
 		}
 	}
