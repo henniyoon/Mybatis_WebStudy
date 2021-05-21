@@ -38,7 +38,12 @@
 		document.form1.submit();
 	}
 	function gb_delete() {
-		
+		var form1 = $("#form1");
+		var result = confirm("삭제하시겠습니까?");
+		if(result) {
+			document.form1.action = "/mybatis_webstudy/guestbook_servlet/delete.do";
+			document.form1.submit();
+		}
 	}
 </script>
 </head>
