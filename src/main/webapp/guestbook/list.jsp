@@ -35,7 +35,7 @@
 				<option value="name_content" selected>이름+내용</option>
 			</c:if>
 		</select>
-		<input type="text" name="searach" value="${searach}">
+		<input type="text" name="search" value="${search}">
 		<input type="button" value="조회" onclick="gb_search()">
 	</form>
 	${count}개의 글이 있습니다. &nbsp;
