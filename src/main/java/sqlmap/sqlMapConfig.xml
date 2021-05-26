@@ -26,6 +26,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="survey/mapper/survey.xml" />
 		<!-- 방명록 -->
 		<mapper resource="guestbook/mapper/guestbook.xml" />
+		<!-- 페이지 나누기 -->
+		<mapper resource="page/mapper/emp.xml" />
 	</mappers>
 </configuration>
 
