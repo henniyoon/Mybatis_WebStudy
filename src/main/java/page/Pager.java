@@ -32,18 +32,16 @@ public class Pager {
 	
 	private int blockEnd; // 현재 블록의 끝 번호
 	
-	
+	// 생성자
 	public Pager(int count, int curPage) {
 		curBlock = 1;
 		this.curPage = curPage;
 		setTotPage(count);	// 전체 페이지 갯수 설정
 		setPageRange();
 		setTotBlock();	// 전체 페이지 블록 갯수 설정
-		
 		// curPage가 속한 페이지 블록의 시작 번호, 끝 번호 계산
 		setBlockRange();
 	}
-
 
 	public void setTotBlock() {
 		// 전체 페이지 갯수 / 페이지 블록 단위

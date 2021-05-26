@@ -38,13 +38,13 @@
 				<c:forEach var="num" begin="${page.blockStart}" end="${page.blockEnd}">
 					<c:choose>
 					
-						<!-- 현재 페이지 -->
 						<c:when test="${num == page.curPage}">
+							<!-- 현재 페이지 -->
 							<span style="color:red">${num}</span>
 						</c:when>
 						
-						<!-- 현재 페이지가 아닐 때 -->
 						<c:otherwise>
+							<!-- 현재 페이지가 아닐 때 -->
 							<a href="#" onclick="list('${num}')">${num}</a>
 						</c:otherwise>
 					
@@ -57,7 +57,7 @@
 				</c:if>
 				
 				<!-- 마지막 -->
-				<c:if test="${page.curPage < page.totpage}">
+				<c:if test="${page.curPage < page.totPage}">
 					<a href="#" onclick="list('${page.totPage}')">[마지막]</a>
 				</c:if>
 			
