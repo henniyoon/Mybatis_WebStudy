@@ -76,5 +76,32 @@ public class BoardDAO {
 		return list;
 	}
 	
+	public List<BoardDTO> list(int pageStart, int pageEnd) {
+		List<BoardDTO> list = null;
+		SqlSession session = null;
+		try {
+			session = MybatisManager.getInstance().openSession();
+			Map<String, Object> map = new HashMap<>();
+			map.put("start", pageStart);
+			map.put("end", pageEnd);
+			list = session.selectList("board.list", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(session != null) session.close();
+		}
+		return list;
+	}
+	
+	public int count() {
+		int result = 0;
+		try(SqlSession session = MybatisManager.getInstance().openSession()) {
+			result = session.selectOne("board.count");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
 
 }
