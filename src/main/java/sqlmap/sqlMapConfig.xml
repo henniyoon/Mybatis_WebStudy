@@ -28,6 +28,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="guestbook/mapper/guestbook.xml" />
 		<!-- 페이지 나누기 -->
 		<mapper resource="page/mapper/emp.xml" />
+		<!-- 게시판 -->
+		<mapper resource="board/mapper/board.xml" />
 	</mappers>
 </configuration>
 
