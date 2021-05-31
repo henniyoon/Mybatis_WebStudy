@@ -76,6 +76,32 @@ public class BoardDAO {
 		return list;
 	}
 	
+	public void update(BoardDTO dto) {
+		SqlSession session = null;
+		try {
+			session = MybatisManager.getInstance().openSession();
+			session.update("board.update", dto);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(session != null) session.close();
+		}
+	}
+	
+	public void delete(int num) {
+		SqlSession session = null;
+		try {
+			session = MybatisManager.getInstance().openSession();
+			session.delete("board.delete", num);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(session != null) session.close();
+		}
+	}
+	
 	public List<BoardDTO> list(int pageStart, int pageEnd) {
 		List<BoardDTO> list = null;
 		SqlSession session = null;
@@ -101,6 +127,33 @@ public class BoardDAO {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	
+	public void insert(BoardDTO dto) {
+		SqlSession session = null;
+		try {
+			session = MybatisManager.getInstance().openSession();
+			session.insert("board.insert", dto);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(session != null) session.close();
+		}
+	}
+	
+	public BoardDTO view(int num) {
+		BoardDTO dto = null;
+		SqlSession session = null;
+		try {
+			session = MybatisManager.getInstance().openSession();
+			dto = session.selectOne("board.view", num);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(session != null) session.close();
+		}
+		return dto;
 	}
 	
 
